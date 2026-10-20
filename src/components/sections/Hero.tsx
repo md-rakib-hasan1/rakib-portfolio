@@ -81,7 +81,7 @@ const Hero = () => {
               download
               className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white/10 px-6 py-3 text-sm font-medium text-[#d5e2f5] transition-colors hover:border-blue-300/40 hover:bg-blue-400/[0.06]"
             >
-              Download CV
+              Download Resume
               <ArrowDown size={16} />
             </a>
           </div>

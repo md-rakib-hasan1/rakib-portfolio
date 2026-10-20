@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 
@@ -16,8 +16,48 @@ const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   const closeMenu = () => setIsOpen(false);
+
+  useEffect(() => {
+    let frame = 0;
+
+    const updateActiveSection = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const marker = 120;
+        const atPageBottom =
+          window.innerHeight + window.scrollY >=
+          document.documentElement.scrollHeight - 2;
+
+        if (atPageBottom) {
+          setActiveSection("contact");
+          return;
+        }
+
+        let current = "home";
+        for (const link of navLinks) {
+          const section = document.querySelector<HTMLElement>(link.href);
+          if (section && section.getBoundingClientRect().top <= marker) {
+            current = link.href.slice(1);
+          }
+        }
+
+        setActiveSection(current);
+      });
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, []);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.08] bg-[#080f1d]/85 backdrop-blur-xl">
@@ -44,12 +84,19 @@ const Navbar = () => {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-7 md:flex">
+        <div className="hidden items-center gap-1 rounded-full border border-white/[0.08] bg-[#0a1423]/90 p-1.5 shadow-inner shadow-black/20 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-[#a8b6ca] transition-colors hover:text-[#8ab8ff]"
+              aria-current={
+                activeSection === link.href.slice(1) ? "location" : undefined
+              }
+              className={`rounded-full border px-3 py-2 text-sm transition-colors ${
+                activeSection === link.href.slice(1)
+                  ? "border-[#8ab8ff]/20 bg-gradient-to-r from-[#3987ff]/20 to-[#8ab8ff]/10 font-semibold text-[#4FC1FF] shadow-[0_0_16px_rgba(57,135,255,0.12)]"
+                  : "border-transparent text-[#a8b6ca] hover:bg-white/[0.04] hover:text-[#d5e2f5]"
+              }`}
             >
               {link.label}
             </Link>
@@ -87,7 +134,14 @@ const Navbar = () => {
                 key={link.href}
                 href={link.href}
                 onClick={closeMenu}
-                className="rounded-lg px-3 py-3 text-sm text-[#c2cee0] transition-colors hover:bg-[#3987ff]/10 hover:text-[#8ab8ff]"
+                aria-current={
+                  activeSection === link.href.slice(1) ? "location" : undefined
+                }
+                className={`rounded-lg px-3 py-3 text-sm transition-colors ${
+                  activeSection === link.href.slice(1)
+                    ? "bg-[#3987ff]/15 font-semibold text-[#8ab8ff]"
+                    : "text-[#c2cee0] hover:bg-[#3987ff]/10 hover:text-[#8ab8ff]"
+                }`}
               >
                 {link.label}
               </Link>
