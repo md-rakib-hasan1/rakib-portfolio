@@ -4,16 +4,10 @@ import {
   ArrowUpRight,
   BookOpen,
   Code2,
-  GraduationCap,
   Lightbulb,
 } from "lucide-react";
 
 const highlights = [
-  {
-    icon: GraduationCap,
-    title: "CSE Student",
-    description: "Studying Computer Science and Engineering at DIU.",
-  },
   {
     icon: Code2,
     title: "Web Development",
