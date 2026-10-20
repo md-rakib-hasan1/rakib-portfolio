@@ -9,27 +9,67 @@ const inter = Inter({
   display: "swap",
 });
 
+// export const metadata: Metadata = {
+//   title: {
+//     default: "Rakib Hasan | Developer Portfolio",
+//     template: "%s | Rakib Hasan",
+//   },
+//   description:
+//     "I'm Rakib Hasan, a CSE student and aspiring web developer building modern web applications with React, Next.js, TypeScript, and more.",
+//   applicationName: "Rakib Hasan Portfolio",
+//   keywords: [
+//     "Rakib Hasan",
+//     "Web Developer",
+//     "Next.js Developer",
+//     "React Developer",
+//     "TypeScript",
+//     "Portfolio",
+//   ],
+//   openGraph: {
+//     title: "Rakib Hasan | Developer Portfolio",
+//     description:
+//       "Explore my projects, technical skills, and journey as a web developer.",
+//     type: "website",
+//   },
+// };
+
+
 export const metadata: Metadata = {
   title: {
     default: "Rakib Hasan | Developer Portfolio",
     template: "%s | Rakib Hasan",
   },
   description:
-    "I'm Rakib Hasan, a CSE student and aspiring web developer building modern web applications with React, Next.js, TypeScript, and more.",
+    "Explore Rakib Hasan's developer portfolio, projects, technical skills, and journey as a CSE student learning modern web development.",
   applicationName: "Rakib Hasan Portfolio",
   keywords: [
     "Rakib Hasan",
-    "Web Developer",
-    "Next.js Developer",
-    "React Developer",
+    "Developer Portfolio",
+    "Web Development",
+    "Next.js",
+    "React",
     "TypeScript",
-    "Portfolio",
+    "Tailwind CSS",
+    "CSE Student",
   ],
+  authors: [{ name: "Rakib Hasan" }],
   openGraph: {
     title: "Rakib Hasan | Developer Portfolio",
     description:
-      "Explore my projects, technical skills, and journey as a web developer.",
+      "Explore my projects, technical skills, and journey in modern web development.",
     type: "website",
+    siteName: "Rakib Hasan Portfolio",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary",
+    title: "Rakib Hasan | Developer Portfolio",
+    description:
+      "Explore my projects, technical skills, and journey in modern web development.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
