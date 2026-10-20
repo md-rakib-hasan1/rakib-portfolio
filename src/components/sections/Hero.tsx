@@ -159,28 +159,34 @@ const Hero = () => {
               />
             </div>
 
-            {/* Floating cards */}
-            <div className="absolute left-0 top-[19%] rounded-2xl border border-blue-200/15 bg-[#0d192b]/90 px-4 py-3 shadow-xl shadow-black/20 backdrop-blur-xl sm:left-[-4%]">
-              <p className="text-[10px] tracking-wider text-[#8ba2c2] uppercase">
-                Currently learning
-              </p>
-              <p className="mt-1 text-sm font-semibold text-[#f1f5fc]">
-                Node.js + Express.js
-              </p>
-            </div>
+            {/* Learning cards orbit around the photo while staying upright. */}
+            <div className="hero-card-orbit absolute inset-0">
+              <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                <div className="hero-card-counter-orbit rounded-2xl border border-blue-200/15 bg-[#0d192b]/95 px-3 py-2.5 shadow-xl shadow-black/20 backdrop-blur-xl sm:px-4 sm:py-3">
+                  <p className="text-[10px] tracking-wider text-[#8ba2c2] uppercase">
+                    Currently learning
+                  </p>
+                  <p className="mt-1 whitespace-nowrap text-xs font-semibold text-[#f1f5fc] sm:text-sm">
+                    Node.js + Express.js
+                  </p>
+                </div>
+              </div>
 
-            <div className="absolute bottom-[17%] right-0 rounded-2xl border border-blue-200/15 bg-[#0d192b]/90 px-4 py-3 shadow-xl shadow-black/20 backdrop-blur-xl sm:right-[-4%]">
-              <div className="flex items-center gap-2">
-                <span className="flex size-7 items-center justify-center rounded-lg bg-blue-400/10 text-[#8ab8ff]">
-                  <Sparkles size={15} />
-                </span>
-                <div>
-                  <p className="text-xs font-semibold text-[#f1f5fc]">
-                    Always Learning
-                  </p>
-                  <p className="mt-1 text-[10px] text-[#8ba2c2]">
-                    One project at a time
-                  </p>
+              <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2">
+                <div className="hero-card-counter-orbit rounded-2xl border border-blue-200/15 bg-[#0d192b]/95 px-3 py-2.5 shadow-xl shadow-black/20 backdrop-blur-xl sm:px-4 sm:py-3">
+                  <div className="flex items-center gap-2">
+                    <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-blue-400/10 text-[#8ab8ff]">
+                      <Sparkles size={15} />
+                    </span>
+                    <div>
+                      <p className="whitespace-nowrap text-xs font-semibold text-[#f1f5fc]">
+                        Always Learning
+                      </p>
+                      <p className="mt-1 whitespace-nowrap text-[10px] text-[#8ba2c2]">
+                        One project at a time
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

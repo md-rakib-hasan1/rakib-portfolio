@@ -102,6 +102,26 @@ img {
     );
 }
 
+.hero-card-orbit {
+    animation: hero-card-orbit 14s linear infinite;
+}
+
+.hero-card-counter-orbit {
+    animation: hero-card-counter-orbit 14s linear infinite;
+}
+
+@keyframes hero-card-orbit {
+    to {
+      transform: rotate(360deg);
+    }
+}
+
+@keyframes hero-card-counter-orbit {
+    to {
+      transform: rotate(-360deg);
+    }
+}
+
 .glass-card {
   background: rgba(13, 25, 43, 0.72);
   border: 1px solid var(--border);
