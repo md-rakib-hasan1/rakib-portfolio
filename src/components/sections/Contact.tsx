@@ -89,7 +89,9 @@ const Contact = () => {
         try {
             const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
             if (!accessKey) {
-                throw new Error("Email service is not configured.");
+                throw new Error(
+                    "The contact form is temporarily unavailable. Please email me directly at rakibhasan98840@gmail.com.",
+                );
             }
 
             const response = await fetch("https://api.web3forms.com/submit", {
