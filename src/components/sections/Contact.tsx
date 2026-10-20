@@ -1,9 +1,12 @@
 
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
     ArrowUpRight,
+    CheckCircle2,
+    CircleAlert,
+    LoaderCircle,
     Mail,
     MessageCircle,
     Send,
@@ -51,18 +54,85 @@ const Contact = () => {
     const [email, setEmail] = useState("");
     const [subject, setSubject] = useState("");
     const [message, setMessage] = useState("");
+    const [isSending, setIsSending] = useState(false);
+    const [toast, setToast] = useState<{
+        type: "success" | "error";
+        message: string;
+    } | null>(null);
+    const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    useEffect(
+        () => () => {
+            if (toastTimer.current) {
+                clearTimeout(toastTimer.current);
+            }
+        },
+        [],
+    );
+
+    const showToast = (type: "success" | "error", toastMessage: string) => {
+        if (toastTimer.current) {
+            clearTimeout(toastTimer.current);
+        }
+
+        setToast({ type, message: toastMessage });
+        toastTimer.current = setTimeout(() => {
+            setToast(null);
+            toastTimer.current = null;
+        }, 5000);
+    };
+
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setIsSending(true);
 
-        const recipient = "rakibhasan98840@gmail.com";
-        const emailSubject = encodeURIComponent(subject);
-        const emailBody = encodeURIComponent(
-            `Name: ${name}\nSender Email: ${email}\n\nMessage:\n${message}`,
-        );
+        try {
+            const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+            if (!accessKey) {
+                throw new Error("Email service is not configured.");
+            }
 
-        window.location.href =
-            `mailto:${recipient}?subject=${emailSubject}&body=${emailBody}`;
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    access_key: accessKey,
+                    name,
+                    email,
+                    subject,
+                    message,
+                    from_name: "Rakib Hasan Portfolio",
+                    replyto: email,
+                }),
+            });
+
+            const result: { success?: boolean; message?: string } =
+                await response.json();
+
+            if (!response.ok || !result.success) {
+                throw new Error(
+                    result.message || "Your message could not be sent. Please try again.",
+                );
+            }
+
+            setName("");
+            setEmail("");
+            setSubject("");
+            setMessage("");
+            showToast("success", "Message sent successfully!");
+        } catch (error) {
+            showToast(
+                "error",
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong. Please try again.",
+            );
+        } finally {
+            setIsSending(false);
+        }
     };
 
     const inputClassName =
@@ -73,6 +143,24 @@ const Contact = () => {
             id="contact"
             className="relative overflow-hidden border-t border-white/[0.06] bg-[#080f1d] section-padding"
         >
+            {toast && (
+                <div
+                    role={toast.type === "success" ? "status" : "alert"}
+                    className={`fixed right-5 top-24 z-[60] flex max-w-sm items-center gap-3 rounded-xl border px-4 py-3 text-sm shadow-xl backdrop-blur-xl ${
+                        toast.type === "success"
+                            ? "border-emerald-400/30 bg-[#0d192b]/95 text-emerald-300"
+                            : "border-red-400/30 bg-[#0d192b]/95 text-red-300"
+                    }`}
+                >
+                    {toast.type === "success" ? (
+                        <CheckCircle2 size={19} className="shrink-0" />
+                    ) : (
+                        <CircleAlert size={19} className="shrink-0" />
+                    )}
+                    <span>{toast.message}</span>
+                </div>
+            )}
+
             <div
                 aria-hidden="true"
                 className="pointer-events-none absolute -left-40 top-20 size-[360px] rounded-full bg-blue-500/[0.09] blur-[120px]"
@@ -224,18 +312,27 @@ const Contact = () => {
 
                             <button
                                 type="submit"
+                                disabled={isSending}
                                 className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#3987ff] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition-all hover:-translate-y-0.5 hover:bg-[#2875ed] hover:shadow-blue-500/30"
                             >
-                                Send Message
-                                <ArrowUpRight
-                                    size={17}
-                                    className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                                />
+                                {isSending ? (
+                                    <>
+                                        Sending...
+                                        <LoaderCircle size={17} className="animate-spin" />
+                                    </>
+                                ) : (
+                                    <>
+                                        Send Message
+                                        <ArrowUpRight
+                                            size={17}
+                                            className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                                        />
+                                    </>
+                                )}
                             </button>
 
                             <p className="text-xs leading-5 text-[#7386a2]">
-                                Submitting opens your email app with the message prepared.
-                                You will need to send the email from there.
+                                Your message will be sent securely to my email.
                             </p>
                         </form>
                     </div>
