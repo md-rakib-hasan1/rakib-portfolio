@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { ArrowUp, Heart } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import BrandMark from "@/components/layout/BrandMark";
 
 const footerLinks = [
   { label: "Home", href: "#home" },
@@ -24,16 +25,14 @@ const Footer = () => {
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           {/* Brand */}
           <Link href="#home" className="group flex w-fit items-center gap-3">
-            <span className="flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#3987ff] to-[#164aab] text-sm font-bold text-white shadow-lg shadow-blue-500/15 transition-transform group-hover:scale-105">
-              RH
-            </span>
+            <BrandMark className="size-11" />
 
             <span>
               <span className="block text-sm font-semibold text-[#f1f5fc]">
                 Rakib Hasan
               </span>
               <span className="mt-1 block text-xs text-[#8194b0]">
-                Aspiring Web Developer
+                Frontend Developer · Learning Backend
               </span>
             </span>
           </Link>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Rakib Hasan — Resume</title>
+<style>
+  @page {
+    size: A4;
+    margin: 14mm 16mm;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    color: #1c2733;
+    font-size: 10.5pt;
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  /* ---------- Header ---------- */
+
+  header {
+    text-align: center;
+    border-bottom: 2.5px solid #3987ff;
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-size: 26pt;
+    letter-spacing: 2.5px;
+    margin: 0;
+    color: #0b1b30;
+    font-weight: 700;
+  }
+
+  .headline {
+    font-size: 11pt;
+    color: #3987ff;
+    font-weight: 600;
+    margin: 3px 0 7px;
+    letter-spacing: 0.4px;
+  }
+
+  .contact-line {
+    font-size: 9.5pt;
+    color: #3d4a5a;
+  }
+
+  .contact-line a {
+    color: #2b5ea8;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .contact-line .sep {
+    color: #9aaac2;
+    padding: 0 6px;
+  }
+
+  /* ---------- Sections ---------- */
+
+  h2 {
+    font-size: 11.5pt;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: #0b1b30;
+    border-bottom: 1.2px solid #c9d8ee;
+    padding-bottom: 3px;
+    margin: 13px 0 8px;
+  }
+
+  h3 {
+    font-size: 10.8pt;
+    margin: 8px 0 1px;
+    color: #0b1b30;
+  }
+
+  .role-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .role-line .meta {
+    font-size: 9.3pt;
+    color: #55637a;
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  .subline {
+    font-size: 9.6pt;
+    color: #3d4a5a;
+    margin: 0 0 3px;
+  }
+
+  .stack {
+    font-size: 9.4pt;
+    color: #2b5ea8;
+    margin: 0 0 3px;
+  }
+
+  p.summary {
+    margin: 0;
+    text-align: justify;
+  }
+
+  ul {
+    margin: 3px 0 6px;
+    padding-left: 17px;
+  }
+
+  li {
+    margin-bottom: 3px;
+  }
+
+  .links {
+    font-size: 9.4pt;
+    color: #2b5ea8;
+    margin-top: 2px;
+  }
+
+  .links a {
+    color: #2b5ea8;
+    text-decoration: none;
+  }
+
+  /* skills table */
+
+  .skill-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .skill-row .label {
+    font-weight: 700;
+    color: #0b1b30;
+    min-width: 128px;
+  }
+
+  .skill-row .items {
+    color: #1c2733;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>RAKIB HASAN</h1>
+  <p class="headline">Aspiring Full-Stack Developer | CSE Student</p>
+  <p class="contact-line">
+    Notun Bazar, Dhaka, Bangladesh<span class="sep">|</span><a href="tel:+8801753569884">01753569884</a><span class="sep">|</span><a href="mailto:rakibhasan98840@gmail.com">rakibhasan98840@gmail.com</a><br />
+    <a href="https://github.com/md-rakib-hasan1">github.com/md-rakib-hasan1</a><span class="sep">|</span><a href="https://www.linkedin.com/in/md-rakib-hasan1">linkedin.com/in/md-rakib-hasan1</a>
+  </p>
+</header>
+
+<section>
+  <h2>Professional Summary</h2>
+  <p class="summary">
+    Computer Science and Engineering student at Dhaka International University focused on web
+    development. Aspiring full-stack developer building projects with modern web technologies and
+    seeking a junior or internship-level opportunity to apply my skills, learn from experienced
+    developers, and grow professionally.
+  </p>
+</section>
+
+<section>
+  <h2>Technical Skills</h2>
+  <div class="skill-row">
+    <span class="label">Frontend:</span>
+    <span class="items">HTML, CSS, JavaScript, TypeScript, React, Next.js, Tailwind CSS</span>
+  </div>
+  <div class="skill-row">
+    <span class="label">Backend &amp; Database:</span>
+    <span class="items">Node.js, Express.js, MongoDB, REST APIs</span>
+  </div>
+  <div class="skill-row">
+    <span class="label">Tools &amp; Deployment:</span>
+    <span class="items">Git, GitHub, VS Code, Vercel</span>
+  </div>
+  <div class="skill-row">
+    <span class="label">Authentication:</span>
+    <span class="items">Better Auth</span>
+  </div>
+</section>
+
+<section>
+  <h2>Projects</h2>
+
+  <div class="role-line">
+    <h3>Bazar Dor — Bengali Grocery Platform</h3>
+    <span class="meta">Next.js, TypeScript, Tailwind CSS, Better Auth</span>
+  </div>
+  <ul>
+    <li>Developed a Bengali-focused grocery platform for exploring products and viewing current and previous prices.</li>
+  </ul>
+  <p class="links">
+    Live: <a href="https://bazar-dor-phi-ebon.vercel.app/">bazar-dor-phi-ebon.vercel.app</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    GitHub: <a href="https://github.com/md-rakib-hasan1/Bazar-Dor">md-rakib-hasan1/Bazar-Dor</a>
+  </p>
+
+  <div class="role-line">
+    <h3>FitLog — Workout Library</h3>
+    <span class="meta">Next.js, TypeScript, Tailwind CSS, API</span>
+  </div>
+  <ul>
+    <li>Built a workout library for exploring exercises and organizing workout plans.</li>
+  </ul>
+  <p class="links">
+    Live: <a href="https://fit-log-delta-snowy.vercel.app/">fit-log-delta-snowy.vercel.app</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    GitHub: <a href="https://github.com/md-rakib-hasan1/fit-log">md-rakib-hasan1/fit-log</a>
+  </p>
+
+  <div class="role-line">
+    <h3>Dev Stack Builder — Technology Stack Builder</h3>
+    <span class="meta">React, TypeScript, Vite, Tailwind CSS, DaisyUI</span>
+  </div>
+  <ul>
+    <li>Created a React application that lets developers explore technologies and build a tech stack by adding and removing technology cards.</li>
+  </ul>
+  <p class="links">
+    Live: <a href="https://dev-stack-builder-rose.vercel.app/">dev-stack-builder-rose.vercel.app</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    GitHub: <a href="https://github.com/md-rakib-hasan1/dev-stack-builder">md-rakib-hasan1/dev-stack-builder</a>
+  </p>
+</section>
+
+<section>
+  <h2>Education</h2>
+
+  <div class="role-line">
+    <h3>Dhaka International University</h3>
+    <span class="meta">August 2024 – Present</span>
+  </div>
+  <p class="subline">BSc in Engineering, Computer Science and Engineering (CSE) — Satarkul, Badda, Dhaka</p>
+  <p class="subline">Expected Graduation: May 2028</p>
+
+  <div class="role-line">
+    <h3>Shaheed A.H.M. Kamaruzzaman Govt. Degree College</h3>
+    <span class="meta">August 2020 – December 2022</span>
+  </div>
+  <p class="subline">Higher Secondary Certificate (HSC), Science — Rajshahi Board, Rajshahi | GPA: 5.00</p>
+
+  <div class="role-line">
+    <h3>Gotegari Shahid Mamun Govt. High School and College</h3>
+    <span class="meta">January 2015 – March 2020</span>
+  </div>
+  <p class="subline">Secondary School Certificate (SSC), Science — Rajshahi Board, Manda, Naogaon | GPA: 5.00</p>
+</section>
+
+</body>
+</html>

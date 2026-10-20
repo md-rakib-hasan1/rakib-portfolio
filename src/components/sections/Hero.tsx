@@ -47,13 +47,20 @@ const Hero = () => {
           </p>
 
           <h1 className="max-w-3xl text-5xl leading-[1.08] font-bold tracking-[-0.045em] text-[#f1f5fc] sm:text-6xl lg:text-7xl xl:text-[84px]">
-            Rakib
+            <span className="text-[#f1f5fc]">Ra</span>
+            <span className="bg-gradient-to-r from-[#8ab8ff] via-[#4fc1ff] to-[#3987ff] bg-clip-text text-transparent">
+              kib
+            </span>
             <br />
-            Hasan<span className="gradient-text">.</span>
+            <span className="text-[#f1f5fc]">Ha</span>
+            <span className="bg-gradient-to-r from-[#8ab8ff] to-[#4fc1ff] bg-clip-text text-transparent">
+              san
+            </span>
+            <span className="gradient-text">.</span>
           </h1>
 
           <h2 className="mt-6 text-xl leading-relaxed font-medium text-[#d5e2f5] sm:text-2xl">
-            Aspiring Web Developer
+            Frontend Developer | Learning Backend
           </h2>
 
           <p className="mt-5 max-w-xl text-sm leading-7 text-[#9aaac2] sm:text-base sm:leading-8">
