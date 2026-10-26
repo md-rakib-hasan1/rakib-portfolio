@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight, FileText } from "lucide-react";
+import { Menu, X, FileText, ArrowDownToLine } from "lucide-react";
 import BrandMark from "@/components/layout/BrandMark";
 
 const navLinks = [
@@ -90,6 +90,7 @@ const Navbar = () => {
         aria-label="Main navigation"
         className="container flex h-[76px] items-center justify-between"
       >
+        {/* Brand / Logo */}
         <Link
           href={getHref("#home")}
           onClick={closeMenu}
@@ -107,7 +108,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Desktop Navigation links */}
+        {/* Desktop Navigation Links */}
         <div className="hidden items-center gap-1 rounded-full border border-white/[0.08] bg-[#111522]/90 p-1.5 shadow-inner shadow-black/30 lg:flex">
           {navLinks.map((link) => {
             const isActive = isHomePage && activeSection === link.anchor.slice(1);
@@ -128,28 +129,30 @@ const Navbar = () => {
           })}
         </div>
 
-        {/* Desktop Actions */}
-        <div className="hidden items-center gap-3 md:flex">
+        {/* Desktop Action: Sleek & Beautiful Resume Button */}
+        <div className="hidden items-center md:flex">
           <a
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full border border-[rgba(163,169,186,0.2)] bg-white/[0.03] px-3.5 py-2 text-xs font-medium text-[#D5DBE8] transition-all hover:border-[#9B7BFF]/50 hover:bg-[#9B7BFF]/10 hover:text-white"
+            className="group relative inline-flex items-center gap-2 rounded-full p-[1px] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_22px_rgba(155,123,255,0.45)]"
           >
-            <FileText size={14} className="text-[#9B7BFF]" />
-            Resume
-          </a>
+            {/* Animated Gradient Border Ring */}
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 rounded-full bg-gradient-to-r from-[#9B7BFF] via-[#7B58EE] to-[#55D6FF] opacity-80 transition-opacity group-hover:opacity-100"
+            />
 
-          <Link
-            href={getHref("#contact")}
-            className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#9B7BFF] to-[#7B58EE] px-4 py-2 text-xs font-semibold text-white shadow-md shadow-[#9B7BFF]/20 transition-all hover:brightness-110 hover:shadow-lg hover:shadow-[#9B7BFF]/30"
-          >
-            Let&apos;s Talk
-            <ArrowUpRight size={14} />
-          </Link>
+            {/* Inner Pill Container */}
+            <span className="relative flex items-center gap-2 rounded-full bg-[#0E121E] px-4 py-2 text-xs font-semibold text-[#F4F5FA] transition-colors group-hover:bg-[#131829]">
+              <FileText size={14} className="text-[#9B7BFF] transition-transform duration-300 group-hover:rotate-6" />
+              <span>Resume</span>
+              <ArrowDownToLine size={13} className="text-[#55D6FF] transition-transform duration-300 group-hover:translate-y-0.5" />
+            </span>
+          </a>
         </div>
 
-        {/* Mobile menu trigger */}
+        {/* Mobile Menu Trigger */}
         <button
           type="button"
           aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -188,13 +191,14 @@ const Navbar = () => {
               );
             })}
 
-            <div className="mt-3 grid grid-cols-2 gap-2 pt-2 border-t border-white/[0.08]">
+            {/* Mobile Resume Action Cards */}
+            <div className="mt-3 grid grid-cols-2 gap-2 pt-3 border-t border-white/[0.08]">
               <a
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMenu}
-                className="flex items-center justify-center gap-1.5 rounded-xl border border-[rgba(163,169,186,0.2)] bg-white/[0.04] px-3 py-2.5 text-xs font-semibold text-[#F4F5FA]"
+                className="flex items-center justify-center gap-1.5 rounded-xl border border-[rgba(163,169,186,0.2)] bg-white/[0.04] px-3 py-2.5 text-xs font-semibold text-[#F4F5FA] hover:bg-white/10 transition-colors"
               >
                 <FileText size={14} className="text-[#9B7BFF]" />
                 View Resume
@@ -202,22 +206,14 @@ const Navbar = () => {
 
               <a
                 href="/resume.pdf"
-                download
+                download="Rakib_Hasan_Resume.pdf"
                 onClick={closeMenu}
-                className="flex items-center justify-center gap-1.5 rounded-xl border border-[#55D6FF]/30 bg-[#55D6FF]/10 px-3 py-2.5 text-xs font-semibold text-[#55D6FF]"
+                className="flex items-center justify-center gap-1.5 rounded-xl border border-[#55D6FF]/35 bg-[#55D6FF]/10 px-3 py-2.5 text-xs font-semibold text-[#55D6FF] hover:bg-[#55D6FF]/20 transition-colors"
               >
+                <ArrowDownToLine size={14} />
                 Download PDF
               </a>
             </div>
-
-            <Link
-              href={getHref("#contact")}
-              onClick={closeMenu}
-              className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#9B7BFF] to-[#7B58EE] px-4 py-3 text-sm font-semibold text-white shadow-md shadow-[#9B7BFF]/25 transition-all hover:brightness-110"
-            >
-              Let&apos;s Talk
-              <ArrowUpRight size={16} />
-            </Link>
           </div>
         </div>
       )}

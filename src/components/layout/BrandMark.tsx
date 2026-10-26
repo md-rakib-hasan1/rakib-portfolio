@@ -6,61 +6,102 @@ const BrandMark = ({ className = "" }: BrandMarkProps) => {
   return (
     <span
       aria-hidden="true"
-      className={`flex shrink-0 items-center justify-center rounded-xl border border-[#9B7BFF]/30 bg-gradient-to-br from-[#9B7BFF] via-[#7B58EE] to-[#55D6FF] shadow-lg shadow-[#9B7BFF]/25 transition-transform duration-300 group-hover:scale-105 ${className}`}
+      className={`relative flex shrink-0 items-center justify-center rounded-xl border border-[rgba(155,123,255,0.35)] bg-gradient-to-br from-[#121626] via-[#101422] to-[#0A0D18] p-1.5 shadow-[0_0_18px_rgba(155,123,255,0.2)] transition-all duration-300 group-hover:scale-105 group-hover:border-[#55D6FF]/50 group-hover:shadow-[0_0_24px_rgba(85,214,255,0.3)] ${className}`}
     >
       <svg
         viewBox="0 0 40 40"
         fill="none"
-        className="size-[82%]"
+        xmlns="http://www.w3.org/2000/svg"
+        className="size-full"
       >
         <defs>
+          {/* Aurora Violet to Cyan Gradient */}
           <linearGradient
-            id="brandmark-core"
-            x1="13.5"
-            y1="13.5"
-            x2="26.5"
-            y2="26.5"
+            id="brand-aurora-primary"
+            x1="4"
+            y1="4"
+            x2="36"
+            y2="36"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#FFFFFF" />
-            <stop offset="0.6" stopColor="#E0D6FF" />
-            <stop offset="1" stopColor="#55D6FF" />
+            <stop offset="0%" stopColor="#B8A2FF" />
+            <stop offset="45%" stopColor="#9B7BFF" />
+            <stop offset="100%" stopColor="#55D6FF" />
           </linearGradient>
+
+          {/* Cyan Accent Gradient */}
+          <linearGradient
+            id="brand-aurora-cyan"
+            x1="16"
+            y1="8"
+            x2="34"
+            y2="34"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0%" stopColor="#55D6FF" />
+            <stop offset="100%" stopColor="#9B7BFF" />
+          </linearGradient>
+
+          {/* Glow filter */}
+          <filter id="aurora-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="1.5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
         </defs>
 
-        {/* Orbit ring — back half (drawn behind the core) */}
-        <ellipse
-          cx="20"
-          cy="20"
-          rx="16.5"
-          ry="7"
-          transform="rotate(-32 20 20)"
-          stroke="#55D6FF"
-          strokeOpacity="0.45"
-          strokeWidth="1.7"
+        {/* Ambient subtle back ring */}
+        <rect
+          x="3"
+          y="3"
+          width="34"
+          height="34"
+          rx="9"
+          stroke="url(#brand-aurora-primary)"
+          strokeWidth="1.2"
+          strokeOpacity="0.4"
+          strokeDasharray="2 3"
         />
 
-        {/* Glowing core */}
-        <circle cx="20" cy="20" r="6.4" fill="url(#brandmark-core)" />
-        <circle
-          cx="18.2"
-          cy="18.2"
-          r="1.7"
-          fill="#FFFFFF"
-          fillOpacity="0.85"
-        />
-
-        {/* Orbit ring — front half, passing over the core */}
+        {/* Interconnected Modern Geometric Monogram 'R' & 'H' */}
+        {/* Left vertical pillar of 'R' */}
         <path
-          d="M34 11.26A16.5 7 -32 0 1 6 28.74"
-          stroke="#FFFFFF"
-          strokeWidth="1.7"
+          d="M10 9C10 7.89543 10.8954 7 12 7V33C10.8954 33 10 32.1046 10 31V9Z"
+          fill="url(#brand-aurora-primary)"
+        />
+
+        {/* Upper curved loop of 'R' */}
+        <path
+          d="M12 7H21C24.3137 7 27 9.46243 27 12.5C27 15.5376 24.3137 18 21 18H12V7Z"
+          stroke="url(#brand-aurora-primary)"
+          strokeWidth="3.2"
+          strokeLinejoin="round"
+        />
+
+        {/* Diagonal dynamic kick of 'R' transitioning into 'H' */}
+        <path
+          d="M19 17L28 33"
+          stroke="url(#brand-aurora-cyan)"
+          strokeWidth="3.2"
           strokeLinecap="round"
         />
 
-        {/* Satellite riding the orbit */}
-        <circle cx="21.2" cy="27.4" r="3.1" fill="#55D6FF" fillOpacity="0.4" />
-        <circle cx="21.2" cy="27.4" r="1.7" fill="#FFFFFF" />
+        {/* Right vertical pillar of 'H' */}
+        <path
+          d="M30 11V31"
+          stroke="url(#brand-aurora-cyan)"
+          strokeWidth="3.2"
+          strokeLinecap="round"
+        />
+
+        {/* Glowing pulse satellite node */}
+        <circle
+          cx="28"
+          cy="12.5"
+          r="1.8"
+          fill="#55D6FF"
+          filter="url(#aurora-glow)"
+        />
+        <circle cx="28" cy="12.5" r="1" fill="#FFFFFF" />
       </svg>
     </span>
   );

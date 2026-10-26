@@ -19,9 +19,9 @@ import {
   SiMongodb,
   SiNextdotjs,
   SiNodedotjs,
-  SiNpm,
   SiPython,
   SiReact,
+  SiShadcnui,
   SiTailwindcss,
   SiTypescript,
   SiVercel,
@@ -65,6 +65,7 @@ const skillCategories: SkillCategory[] = [
     icon: Palette,
     skills: [
       { name: "Tailwind CSS v4", icon: SiTailwindcss, color: "#06B6D4" },
+      { name: "shadcn/ui", icon: SiShadcnui, color: "#FFFFFF" },
       { name: "DaisyUI", icon: SiDaisyui, color: "#1AD1A5" },
       { name: "Responsive UI", icon: Layers, color: "#9B7BFF" },
       { name: "CSS Variables", icon: Code2, color: "#55D6FF" },
@@ -106,7 +107,6 @@ const skillCategories: SkillCategory[] = [
       { name: "GitHub", icon: SiGithub, color: "#FFFFFF" },
       { name: "VS Code", icon: Code2, color: "#007ACC" },
       { name: "Vercel", icon: SiVercel, color: "#FFFFFF" },
-      { name: "npm", icon: SiNpm, color: "#CB3837" },
     ],
   },
 ];
