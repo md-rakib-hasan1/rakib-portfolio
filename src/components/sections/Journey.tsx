@@ -115,14 +115,23 @@ const Journey = () => {
               return (
                 <div
                   key={item.step}
-                  className={`relative grid grid-cols-[2rem_minmax(0,1fr)] gap-x-5 md:grid-cols-[minmax(0,1fr)_3.5rem_minmax(0,1fr)] md:gap-x-8 items-center`}
+                  className="relative grid grid-cols-[2rem_minmax(0,1fr)] items-center gap-x-5 md:grid-cols-[minmax(0,1fr)_3.5rem_minmax(0,1fr)] md:gap-x-8"
                 >
-                  {/* Left Column (Desktop) */}
                   <div
                     className={`${
-                      isEven ? "md:text-right" : "md:order-3 md:text-left"
-                    } col-start-2 row-start-1 md:col-start-auto md:row-start-auto`}
+                      isEven
+                        ? "md:col-start-1 md:col-end-2 md:text-right"
+                        : "md:col-start-3 md:col-end-4 md:text-left"
+                    } relative col-start-2 row-start-1 md:row-start-1`}
                   >
+                    <span
+                      aria-hidden="true"
+                      className={`absolute top-1/2 hidden h-px w-[3.75rem] -translate-y-1/2 md:block ${
+                        isEven
+                          ? "right-[-3.75rem] bg-gradient-to-r from-[#55D6FF]/20 to-[#9B7BFF]/50"
+                          : "left-[-3.75rem] bg-gradient-to-l from-[#55D6FF]/20 to-[#9B7BFF]/50"
+                      }`}
+                    />
                     <article className="glass-card group p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1">
                       <div
                         className={`flex flex-wrap items-center gap-2 mb-3 ${
@@ -163,7 +172,7 @@ const Journey = () => {
                   </div>
 
                   {/* Center Node (Marker) */}
-                  <div className="col-start-1 row-start-1 md:col-start-2 md:row-start-auto flex items-center justify-center">
+                  <div className="col-start-1 row-start-1 flex items-center justify-center md:col-start-2 md:row-start-1">
                     <span
                       aria-hidden="true"
                       className="flex size-8 items-center justify-center rounded-full border border-[#9B7BFF]/40 bg-[#111522] shadow-[0_0_15px_rgba(155,123,255,0.35)] transition-transform group-hover:scale-110"
@@ -172,13 +181,6 @@ const Journey = () => {
                     </span>
                   </div>
 
-                  {/* Empty Spacer Column for balance on desktop */}
-                  <div
-                    aria-hidden="true"
-                    className={`hidden md:block ${
-                      isEven ? "md:order-3" : "md:order-1"
-                    }`}
-                  />
                 </div>
               );
             })}

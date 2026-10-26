@@ -114,14 +114,23 @@ const Education = () => {
               return (
                 <div
                   key={item.institution}
-                  className="relative grid grid-cols-[2rem_minmax(0,1fr)] gap-x-5 md:grid-cols-[minmax(0,1fr)_3.5rem_minmax(0,1fr)] md:gap-x-8 items-center"
+                  className="relative grid grid-cols-[2rem_minmax(0,1fr)] items-center gap-x-5 md:grid-cols-[minmax(0,1fr)_3.5rem_minmax(0,1fr)] md:gap-x-8"
                 >
-                  {/* Card Column: Alternates Left / Right on Desktop */}
                   <div
                     className={`${
-                      isEven ? "md:text-right" : "md:order-3 md:text-left"
-                    } col-start-2 row-start-1 md:col-start-auto md:row-start-auto`}
+                      isEven
+                        ? "md:col-start-1 md:col-end-2 md:text-right"
+                        : "md:col-start-3 md:col-end-4 md:text-left"
+                    } relative col-start-2 row-start-1 md:row-start-1`}
                   >
+                    <span
+                      aria-hidden="true"
+                      className={`absolute top-1/2 hidden h-px w-[3.75rem] -translate-y-1/2 md:block ${
+                        isEven
+                          ? "right-[-3.75rem] bg-gradient-to-r from-[#55D6FF]/20 to-[#9B7BFF]/50"
+                          : "left-[-3.75rem] bg-gradient-to-l from-[#55D6FF]/20 to-[#9B7BFF]/50"
+                      }`}
+                    />
                     <article
                       className={`glass-card group p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1.5 ${
                         item.current
@@ -223,7 +232,7 @@ const Education = () => {
                   </div>
 
                   {/* Center Node (Marker) */}
-                  <div className="col-start-1 row-start-1 md:col-start-2 md:row-start-auto flex items-center justify-center">
+                  <div className="col-start-1 row-start-1 flex items-center justify-center md:col-start-2 md:row-start-1">
                     <span
                       aria-hidden="true"
                       className={`flex size-9 items-center justify-center rounded-full border transition-transform duration-300 group-hover:scale-110 ${
@@ -236,13 +245,6 @@ const Education = () => {
                     </span>
                   </div>
 
-                  {/* Empty Spacer Column for Desktop Balance */}
-                  <div
-                    aria-hidden="true"
-                    className={`hidden md:block ${
-                      isEven ? "md:order-3" : "md:order-1"
-                    }`}
-                  />
                 </div>
               );
             })}
