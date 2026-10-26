@@ -6,7 +6,7 @@ const BrandMark = ({ className = "" }: BrandMarkProps) => {
   return (
     <span
       aria-hidden="true"
-      className={`flex shrink-0 items-center justify-center rounded-xl border border-blue-200/20 bg-gradient-to-br from-[#3987ff] via-[#2167d0] to-[#164aab] shadow-lg shadow-blue-500/20 transition-transform group-hover:scale-105 ${className}`}
+      className={`flex shrink-0 items-center justify-center rounded-xl border border-[#9B7BFF]/30 bg-gradient-to-br from-[#9B7BFF] via-[#7B58EE] to-[#55D6FF] shadow-lg shadow-[#9B7BFF]/25 transition-transform duration-300 group-hover:scale-105 ${className}`}
     >
       <svg
         viewBox="0 0 40 40"
@@ -23,7 +23,8 @@ const BrandMark = ({ className = "" }: BrandMarkProps) => {
             gradientUnits="userSpaceOnUse"
           >
             <stop stopColor="#FFFFFF" />
-            <stop offset="1" stopColor="#8AB8FF" />
+            <stop offset="0.6" stopColor="#E0D6FF" />
+            <stop offset="1" stopColor="#55D6FF" />
           </linearGradient>
         </defs>
 
@@ -34,8 +35,8 @@ const BrandMark = ({ className = "" }: BrandMarkProps) => {
           rx="16.5"
           ry="7"
           transform="rotate(-32 20 20)"
-          stroke="#DDF5FF"
-          strokeOpacity="0.5"
+          stroke="#55D6FF"
+          strokeOpacity="0.45"
           strokeWidth="1.7"
         />
 
@@ -46,7 +47,7 @@ const BrandMark = ({ className = "" }: BrandMarkProps) => {
           cy="18.2"
           r="1.7"
           fill="#FFFFFF"
-          fillOpacity="0.75"
+          fillOpacity="0.85"
         />
 
         {/* Orbit ring — front half, passing over the core */}
@@ -58,7 +59,7 @@ const BrandMark = ({ className = "" }: BrandMarkProps) => {
         />
 
         {/* Satellite riding the orbit */}
-        <circle cx="21.2" cy="27.4" r="3.1" fill="#9FE7FF" fillOpacity="0.3" />
+        <circle cx="21.2" cy="27.4" r="3.1" fill="#55D6FF" fillOpacity="0.4" />
         <circle cx="21.2" cy="27.4" r="1.7" fill="#FFFFFF" />
       </svg>
     </span>

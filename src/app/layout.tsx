@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -9,43 +8,70 @@ const inter = Inter({
   display: "swap",
 });
 
+const siteUrl = "https://rakib-portfolio-peach.vercel.app";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Rakib Hasan | Developer Portfolio",
+    default: "Rakib Hasan | Frontend Developer Portfolio",
     template: "%s | Rakib Hasan",
   },
   description:
-    "Explore Rakib Hasan's developer portfolio, projects, technical skills, and journey as a CSE student learning modern web development.",
+    "Personal portfolio of Rakib Hasan — Computer Science student and Frontend Developer building responsive, accessible web applications with React, Next.js, TypeScript, and modern web tools.",
   applicationName: "Rakib Hasan Portfolio",
   keywords: [
     "Rakib Hasan",
-    "Developer Portfolio",
-    "Web Development",
-    "Next.js",
-    "React",
+    "Frontend Developer",
+    "Web Developer",
+    "Next.js Developer",
+    "React Developer",
     "TypeScript",
     "Tailwind CSS",
-    "CSE Student",
+    "Bazar Dor",
+    "FitLog",
+    "Dev Stack Builder",
+    "Dhaka International University",
+    "CSE Student Bangladesh",
   ],
-  authors: [{ name: "Rakib Hasan" }],
+  authors: [{ name: "Rakib Hasan", url: siteUrl }],
+  creator: "Rakib Hasan",
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
-    title: "Rakib Hasan | Developer Portfolio",
+    title: "Rakib Hasan | Frontend Developer Portfolio",
     description:
-      "Explore my projects, technical skills, and journey in modern web development.",
+      "Explore projects, technical skills, and learning journey of Rakib Hasan — CSE student and Frontend Developer.",
+    url: siteUrl,
     type: "website",
     siteName: "Rakib Hasan Portfolio",
     locale: "en_US",
+    images: [
+      {
+        url: "/assets/Professional%20Tech%20Workspace%20Portrait.png",
+        width: 1200,
+        height: 630,
+        alt: "Rakib Hasan — Frontend Developer",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
-    title: "Rakib Hasan | Developer Portfolio",
+    card: "summary_large_image",
+    title: "Rakib Hasan | Frontend Developer Portfolio",
     description:
-      "Explore my projects, technical skills, and journey in modern web development.",
+      "Explore projects, technical skills, and learning journey of Rakib Hasan.",
+    images: ["/assets/Professional%20Tech%20Workspace%20Portrait.png"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

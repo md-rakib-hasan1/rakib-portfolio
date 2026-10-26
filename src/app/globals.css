@@ -2,17 +2,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #080f1d;
-  --foreground: #f1f5fc;
+  --background: #090B12;
+  --foreground: #F4F5FA;
 
-  --surface: #0d192b;
-  --surface-hover: #12233b;
+  --surface: #111522;
+  --surface-hover: #161C2E;
+  --surface-card: rgba(17, 21, 34, 0.82);
 
-  --primary: #3987ff;
-  --primary-light: #8ab8ff;
+  --primary: #9B7BFF;
+  --primary-hover: #865EFE;
+  --primary-light: #B8A2FF;
 
-  --muted: #9aaac2;
-  --border: rgba(138, 190, 255, 0.14);
+  --secondary: #55D6FF;
+  --secondary-hover: #38C6F4;
+
+  --muted: #A3A9BA;
+  --muted-dark: #6C7488;
+  --border: rgba(163, 169, 186, 0.14);
+  --border-focus: rgba(155, 123, 255, 0.55);
 
   --radius: 16px;
 }
@@ -36,14 +43,20 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 ::selection {
-  background: rgba(57, 135, 255, 0.35);
-  color: #ffffff;
+  background: rgba(155, 123, 255, 0.35);
+  color: #FFFFFF;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
 }
 
 a {
@@ -68,7 +81,7 @@ img {
 }
 
 .container {
-  width: min(1120px, calc(100% - 40px));
+  width: min(1140px, calc(100% - 40px));
   margin-inline: auto;
 }
 
@@ -78,60 +91,51 @@ img {
 
 .gradient-text {
   background: linear-gradient(
-    120deg,
-    #f1f5fc 10%,
-    #8ab8ff 55%,
-    #3987ff 100%
+    135deg,
+    #FFFFFF 15%,
+    #B8A2FF 50%,
+    #55D6FF 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-.watercolor-glow {
+.aurora-badge {
+  background: linear-gradient(135deg, rgba(155, 123, 255, 0.15), rgba(85, 214, 255, 0.12));
+  border: 1px solid rgba(155, 123, 255, 0.28);
+}
+
+.aurora-glow {
   background:
     radial-gradient(
-      ellipse at 20% 30%,
-      rgba(57, 135, 255, 0.16),
+      ellipse at 15% 25%,
+      rgba(155, 123, 255, 0.14),
       transparent 55%
     ),
     radial-gradient(
-      ellipse at 80% 65%,
-      rgba(90, 150, 255, 0.1),
+      ellipse at 85% 70%,
+      rgba(85, 214, 255, 0.11),
       transparent 50%
     );
 }
 
-.hero-card-orbit {
-    animation: hero-card-orbit 14s linear infinite;
-}
-
-.hero-card-counter-orbit {
-    animation: hero-card-counter-orbit 14s linear infinite;
-}
-
-@keyframes hero-card-orbit {
-    to {
-      transform: rotate(360deg);
-    }
-}
-
-@keyframes hero-card-counter-orbit {
-    to {
-      transform: rotate(-360deg);
-    }
-}
-
 .glass-card {
-  background: rgba(13, 25, 43, 0.72);
+  background: var(--surface-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 180ms;
+.glass-card:hover {
+  border-color: rgba(155, 123, 255, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(155, 123, 255, 0.12);
+}
+
+.hero-orbit-border {
+  border: 1px dashed rgba(155, 123, 255, 0.25);
 }
 
 ::-webkit-scrollbar {
@@ -139,16 +143,16 @@ img {
 }
 
 ::-webkit-scrollbar-track {
-  background: #080f1d;
+  background: #090B12;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #263d5d;
+  background: #1C2236;
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3987ff;
+  background: #9B7BFF;
 }
 
 @media (max-width: 768px) {
@@ -157,7 +161,7 @@ img {
   }
 
   .section-padding {
-    padding-block: 64px;
+    padding-block: 68px;
   }
 }
 
